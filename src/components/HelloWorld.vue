@@ -34,8 +34,8 @@
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  props: { // 변수 설정
+    msg: String // 변수 타입 설정
   }
 }
 </script>
