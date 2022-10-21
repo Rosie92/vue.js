@@ -53,6 +53,16 @@
         🎈 추가로 watch 옵션 외에도 명령형 vm$watch API를 사용할 수 있음
       </p>
     </div>
+
+    <div class="margin">
+      <h4>⚾ computed 속성 vs Watch 속성</h4>
+      <p>Vue는 현재 활성화된 인스턴스에서 데이터 변경을 관찰하고 이에 반응하는 좀 더 일반적인 방법인 watch 속성을 제공<br>
+        다른 데이터를 기반으로 변경해야 하는 데이터가 있는 경우, watch를 과도하게 쓰고자 하는 유혹이 있을 수 있음<br>
+        🎈 특히 AngularJS 기반에서 온 경우<br>
+        그러나 명령형 watch 콜백보다 computed 속성을 쓰는 것이 더 나은 경우가 많음
+      </p>
+      <span>{{ fullName }}</span>
+    </div>
   </div>
   <a @click="scrollToTop()" class="top">맨위로</a>
 </template>
@@ -67,6 +77,7 @@ export default {
 
   data() {
     return {
+      /* computed */
       auther: {
         name: 'John',
         books: [
@@ -75,8 +86,15 @@ export default {
           'Vue 4 - The Mystery'
         ]
       },
+
+      /* Watch 속성 (사용자 지정 감시자 Watcher)*/
       question: '',
-      answer: '질문은 보통 물음표를 포함합니다. ;-'
+      answer: '질문은 보통 물음표를 포함합니다. ;-',
+
+      /* computed 속성 vs Watch 속성 */
+      firstName: 'Foo',
+      lastName: 'Bar',
+      /*fullName: 'Foo Bar'*/
     }
   },
 
@@ -84,6 +102,10 @@ export default {
     // computed getter
     publishedBooksMessage() { // computed 속성 선언
       return this.auther.books.length > 0 ? '있음' : '없음'
+    },
+    // computed 속성 vs Watch 속성 -> computed 사용의 경우
+    fullName() {
+      return this.firstName + ' ' + this.lastName
     }
   },
 
@@ -113,7 +135,14 @@ export default {
       if (newQuestion.indexOf('?') > -1) {
         this.getAnswer()
       }
-    }
+    },
+    // computed 속성 vs Watch 속성 -> watch 사용의 경우
+    /*firstName(val) {
+      this.fullName = val + ' ' + this.lastName
+    },
+    lastName(val) {
+      this.fullName = this.firstName + ' ' + val
+    }*/
   }
 }
 </script>
