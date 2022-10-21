@@ -48,16 +48,17 @@
         </div>
       </div>
 
-<!--      <div class="margin">
+      <div class="margin">
         <h4>🥎 component에서 사용하기</h4>
-        <p>단일 루트 엘리먼트가 있는 커스텀 컴포넌트에서 class 속성을 사용하면 해당 클래스가 이 엘리먼트에 추가됨<br>
+        <p>컴포넌트 숙지 후 재확인</p>
+<!--        <p>단일 루트 엘리먼트가 있는 커스텀 컴포넌트에서 class 속성을 사용하면 해당 클래스가 이 엘리먼트에 추가됨<br>
           이 엘리먼트의 기존 클래스는 덮어 쓰지 않음
         </p>
         <my-component class="default">
           my-component class="default"<br>
           components: { myComponent: '＜p class="border"＞hi＜/p＞!' }
-        </my-component>
-      </div>-->
+        </my-component>-->
+      </div>
     </div>
 
 
