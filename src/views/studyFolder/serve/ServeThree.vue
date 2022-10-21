@@ -147,13 +147,6 @@ export default {
 }
 </script>
 
+<style> @import "../css/css.css"; </style>
 <style scoped>
-  .margin {
-    margin: 80px;
-  }
-  .top {
-    color: brown;
-    font-weight: bolder;
-    cursor: pointer;
-  }
 </style>

@@ -6,6 +6,7 @@
       <button @click="serveItem='serveOne'">📕 serveOne</button>
       <button @click="serveItem='serveTwo'">📗 serveTwo</button>
       <button @click="serveItem='serveThree'">📙 serveThree</button>
+      <button @click="serveItem='serveFour'">📘 serveFour</button>
       <hr class="hr">
     </div>
 
@@ -24,6 +25,10 @@
     <div v-else-if="serveItem=='serveThree'">
       <serve-three/>
     </div>
+
+    <div v-else-if="serveItem=='serveFour'">
+      <serve-four/>
+    </div>
   </div>
 </template>
 
@@ -31,6 +36,7 @@
 import serveOne from "@/views/studyFolder/serve/ServeOne"; // ServeOne.vue를 갖다씀
 import serveTwo from "@/views/studyFolder/serve/ServeTwo";
 import serveThree from "@/views/studyFolder/serve/ServeThree";
+import serveFour from "@/views/studyFolder/serve/ServeFour";
 
 export default {
   name: "mainView",
@@ -42,7 +48,8 @@ export default {
   components: {
     serveOne, // MainServce.vue를 갖다씀
     serveTwo,
-    serveThree
+    serveThree,
+    serveFour
   },
 
   data() {

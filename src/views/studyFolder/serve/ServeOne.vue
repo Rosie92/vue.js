@@ -36,7 +36,7 @@
       <br> <!-- v-bind의 약어 : -->
       <p>
         ✅ 동적 전달인자, v-bind의 속성 값을 변수로 지정<br>
-        a v-bind:[attribute]="url"&nbsp;&nbsp;Click<br>
+        ＜a v-bind:[attribute]="url"＞Click＜/a＞<br>
         &nbsp;┃ attribute: "href", url: "about" ┃
       </p>
       <a v-bind:[attribute]="url">Click</a>
@@ -91,24 +91,6 @@ export default {
 }
 </script>
 
+<style> @import "../css/css.css"; </style>
 <style scoped> /* scoped 이 파일에서만 적용되는 style*/
-  .margin {
-    /*border: 1px solid #eee;
-    border-radius: 2px;*/
-    margin: 80px;
-    /*font-family: sans-serif;
-    padding: 20px 30px;
-    margin-top: 1em;
-    margin-bottom: 40px;
-    user-select: none;
-    overflow-x: auto;*/
-  }
-  .top {
-    color: brown;
-    font-weight: bolder;
-    cursor: pointer;
-  }
-  button {
-    cursor: pointer;
-  }
 </style>

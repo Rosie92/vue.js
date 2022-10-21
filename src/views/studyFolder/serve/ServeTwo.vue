@@ -42,8 +42,7 @@ export default {
   }
 }
 </script>
+
+<style> @import "../css/css.css"; </style>
 <style scoped>
-  button {
-    cursor: pointer;
-  }
 </style>
