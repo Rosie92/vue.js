@@ -1,6 +1,6 @@
 <template>
   <div class="margin">
-    <h1>7. 이벤트 핸들링</h1>
+    <h1>7. Event 핸들링</h1>
     <div class="margin">
       <h3>⚾ 이벤트 청취, 메소드 이벤트 핸들러</h3>
       <p>🏀 v-on 디렉티브는 DOM 이벤트를 듣고 트리거 될 때와 JS를 실행할 때 사용함. v-on:/@ 으로 사용<br>
@@ -150,9 +150,8 @@
         3. ViewModel이 파기되면 모든 이벤트 리스너가 자동으로 제거됨. 이벤트 제거에 대한 걱정이 필요 없어짐
       </div>
     </div>
-
-
     </div>
+  <a @click="scrollToTop()" class="top">🔝</a>
 </template>
 
 <script>
@@ -188,6 +187,10 @@ export default {
     },
     two(event) { // 두번째 핸들러 로직...
       alert("two")
+    },
+
+    scrollToTop() {
+      window.scrollTo(0, 0);
     }
   },
 
@@ -205,6 +208,7 @@ export default {
 }
 </script>
 
+<style> @import "../../views/studyFolder/css/css.css"; </style>
 <style scoped>
   hr {
     margin: 30px

@@ -1,7 +1,7 @@
 <template>
   <div class="margin">
     <div class="margin">
-      <h1>1. 템플릿 문법</h1>
+      <h1>1. Template 문법</h1>
       <h3>⚾ v-once</h3>
       <p>{{ msg }}</p>
       <p v-once>{{ v_once }}</p>
@@ -23,13 +23,10 @@
         디렉티브 역할 : 표현식의 값이 변경될 때 발생하는 부수 효과(side effects)들을 반응적으로 DOM에 적용하는 것
       -->
       <p>🔽이중괄호는 html 속성에 사용할 수 없음. v-bind를 사용🔽</p>
-      <div v-if="con">
-        <button type="button" v-on:click="con=false">false로 변경</button>
+      <div class="check">
+        <input type="checkbox" id="con" v-model="con" />
+        <label for="con">change</label>
       </div>
-      <div v-else> <!-- v-on의 약어 @ -->
-        <button type="button" @click="con=true">true로 변경</button>
-      </div><br>
-
       <input type="text"
              :placeholder="con?item1:item2"
              v-bind:disabled="!con"/>
@@ -39,24 +36,24 @@
         ＜a v-bind:[attribute]="url"＞Click＜/a＞<br>
         &nbsp;┃ attribute: "href", url: "about" ┃
       </p>
-      <a v-bind:[attribute]="url">Click</a>
+      <div class="check">
+        <a v-bind:[attribute]="url">Click</a>
+      </div>
     </div>
 
 
     <div class="margin">
       <h3>⚾ v-if</h3>
       <p>🔽조건으로 사용할 변수를 지정, 조건의 true/false를 판단해 표시/미표시🔽</p>
-      <div v-if="seen">
-        <button type="button" @click="seen=false">false로 변경</button>
-      </div>
-      <div v-else>
-        <button type="button" @click="seen=true">true로 변경</button>
+      <div class="check">
+        <input type="checkbox" id="seen" v-model="seen" />
+        <label for="seen">change</label>
       </div>
       <p v-if="seen">[v-if="seen"] 📕 v-if의 조건이 true 인 경우에만 볼 수 있음</p>
       <p v-else>[v-else] 📕 조건이 false 인 경우에만 볼 수 있음</p>
     </div>
   </div>
-  <a @click="scrollToTop()" class="top">맨위로</a>
+  <a @click="scrollToTop()" class="top">🔝</a>
 </template>
 
 <script>
@@ -91,6 +88,6 @@ export default {
 }
 </script>
 
-<style> @import "../css/css.css"; </style>
+<style> @import "../../views/studyFolder/css/css.css"; </style>
 <style scoped> /* scoped 이 파일에서만 적용되는 style*/
 </style>

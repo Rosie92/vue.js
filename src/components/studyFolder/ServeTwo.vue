@@ -43,6 +43,6 @@ export default {
 }
 </script>
 
-<style> @import "../css/css.css"; </style>
+<style> @import "../../views/studyFolder/css/css.css"; </style>
 <style scoped>
 </style>

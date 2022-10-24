@@ -1,6 +1,6 @@
 <template>
   <div class="margin">
-    <h1>6. 리스트 렌더링</h1>
+    <h1>6. List 렌더링</h1>
     <div class="margin">
       <h3>⚾ v-for로 엘리먼트에 배열 매핑하기</h3>
       <p>v-for 디렉티브를 사용하여 배열 기반으로 리스트를 렌더링<br>
@@ -225,15 +225,8 @@
       <h3>⚾ 컴포넌트의 v-for</h3>
       <p>컴포넌트 숙지 후 재확인</p>
     </div>
-
-
-
-
-
-
-
   </div>
-  <a @click="scrollToTop()" class="top">맨위로</a>
+  <a @click="scrollToTop()" class="top">🔝</a>
 </template>
 
 <script>
@@ -293,7 +286,7 @@ export default {
 }
 </script>
 
-<style> @import "../css/css.css"; </style>
+<style> @import "../../views/studyFolder/css/css.css"; </style>
 <style scoped>
   .demo {
     font-family: sans-serif;

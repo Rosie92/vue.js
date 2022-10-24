@@ -64,7 +64,7 @@
       <span>{{ fullName }}</span>
     </div>
   </div>
-  <a @click="scrollToTop()" class="top">맨위로</a>
+  <a @click="scrollToTop()" class="top">🔝</a>
 </template>
 
 <script>
@@ -147,6 +147,6 @@ export default {
 }
 </script>
 
-<style> @import "../css/css.css"; </style>
+<style> @import "../../views/studyFolder/css/css.css"; </style>
 <style scoped>
 </style>

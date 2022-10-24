@@ -1,26 +1,12 @@
 <template>
   <div class="margin">
-    <h1>4. 클래스와 스타일 바인딩</h1>
+    <h1>4. Class와 Style 바인딩</h1>
     <div class="margin">
       <h3>⚾ HTML 클래스 바인딩</h3>
       <h4>🥎 객체 구문</h4>
       <p>v-bind가 class와 style과 함께 사용될 때 특별한 개선사항을 제공</p>
-      <div class="inline">
-        <div v-if="isActive">
-          <button type="button" @click="isActive=false">isActive false로 변경</button>
-        </div>
-        <div v-else>
-          <button type="button" @click="isActive=true">isActive true로 변경</button>
-        </div>
-      </div>
-      <div class="inline">
-        <div v-if="isActive2">
-          <button type="button" @click="isActive2=false">isActive2 false로 변경</button>
-        </div>
-        <div v-else>
-          <button type="button" @click="isActive2=true">isActive2 true로 변경</button>
-        </div> <!-- v-bind 약어 (:) -->
-      </div>
+      <div class="check"><input type="checkbox" id="isActive" v-model="isActive" /><label for="isActive">isActive</label></div>
+      <div class="check"><input type="checkbox" id="isActive2" v-model="isActive2" /><label for="isActive2">isActive2</label></div>
       <p class="default" :class="{active: isActive, border: isActive2}">
         🎨 ＜p class="default" :class="{active: isActive, border: isActive2}"＞<br>
         default ◀ color: red; "<br>
@@ -93,7 +79,7 @@
     </div>
 
   </div>
-  <a @click="scrollToTop()" class="top">맨위로</a>
+  <a @click="scrollToTop()" class="top">🔝</a>
 </template>
 
 <script>
@@ -143,7 +129,7 @@ export default {
 }
 </script>
 
-<style> @import "../css/css.css"; </style>
+<style> @import "../../views/studyFolder/css/css.css"; </style>
 <style scoped>
   /*HTML 클래스 바인딩*/
   .default {

@@ -42,9 +42,8 @@
         참고 : 동일 엘리먼트에 v-if와 v-for가 함께 사용될 때, v-if가 더 높은 우선순위
       </p>
     </div>
-
-
   </div>
+  <a @click="scrollToTop()" class="top">🔝</a>
 </template>
 
 <script>
@@ -57,11 +56,17 @@ export default {
         color: 'green'
       }
     }
+  },
+
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    }
   }
 }
 </script>
 
-<style> @import "../css/css.css"; </style>
+<style> @import "../../views/studyFolder/css/css.css"; </style>
 <style scoped>
 
 </style>
