@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: "ServeFive",
+  name: "ComFive",
 
   data() {
     return {

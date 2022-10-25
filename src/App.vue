@@ -3,10 +3,16 @@
   <nav>
     <router-link to="/">Home</router-link>&nbsp <!-- onclick과 똑같음 -->
     <router-link to="/about">About</router-link>&nbsp
-    <router-link to="/main">Main</router-link> <!-- router의 path값인 /test로 연결 -->
+    <router-link to="/main">Main</router-link> <!-- router의 path값인 /main로 연결 -->
   </nav>
   <router-view/> <!-- router에 설정한 링크들을 화면에 표시하는 역할 -->
 </template>
+
+<script>
+export default {
+  created() {}
+}
+</script>
 
 <style>
 #app {

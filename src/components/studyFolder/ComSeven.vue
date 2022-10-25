@@ -156,7 +156,7 @@
 
 <script>
 export default {
-  name: "ServeSeven",
+  name: "ComSeven",
 
   methods: {
     /*⚾ 이벤트 청취, 메소드 이벤트 핸들러*/

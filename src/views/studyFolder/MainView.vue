@@ -6,35 +6,36 @@
       <p>📕 ▶ 📗 ▶ 📙 ▶ 📘 ▶ 📒
       </p>
       <div class="inline">
-        <button @click="serveItem='serveOne'">📕 Template 문법</button>
-        <button @click="serveItem='serveTwo'">📗 Data 속성과 Methods</button>
-        <button @click="serveItem='serveThree'">📙 Computed 속성과 Watch</button>
-        <button @click="serveItem='serveFour'">📘 Class와 Style 바인딩</button>
-        <button @click="serveItem='serveFive'">📒 조건부 렌더링</button>
+        <button @click="comItem='comOne'">📕 Template 문법</button>
+        <button @click="comItem='comTwo'">📗 Data 속성과 Methods</button>
+        <button @click="comItem='comThree'">📙 Computed 속성과 Watch</button>
+        <button @click="comItem='comFour'">📘 Class와 Style 바인딩</button>
+        <button @click="comItem='comFive'">📒 조건부 렌더링</button>
       </div>
       <div class="inline">
-        <button @click="serveItem='serveSix'">📕 List 렌더링</button>
-        <button @click="serveItem='serveSeven'">📗 Event 핸들링</button>
-        <button @click="serveItem='serveEight'">📙 Form 입력 바인딩</button>
-        <button @click="serveItem='serveNine'">📘 부모 자식간의 Data 핸들링</button>
+        <button @click="comItem='comSix'">📕 List 렌더링</button>
+        <button @click="comItem='comSeven'">📗 Event 핸들링</button>
+        <button @click="comItem='comEight'">📙 Form 입력 바인딩</button>
+        <button @click="comItem='comNine'">📘 부모 자식간의 Data 핸들링</button>
+        <button @click="comItem='comTen'">📒 store</button>
       </div>
       <hr class="hr">
     </div>
 
-    <div v-if="serveItem==='serveOne'">
-      <serveOne
-        msg="- ServeOne의 'msg'"
+    <div v-if="comItem==='ComOne'">
+      <com-one
+        msg="- ComOne의 'msg'"
         v_once="- 갱신되지 않는 데이터 'v-once, Option'"
         rawHtml="<span style='color: red'>This should be red.</span>"/>
     </div>
-    <div v-else-if="serveItem==='serveTwo'"><serve-two/></div>
-    <div v-else-if="serveItem==='serveThree'"><serve-three/></div>
-    <div v-else-if="serveItem==='serveFour'"><serve-four/></div>
-    <div v-else-if="serveItem==='serveFive'"><serve-five/></div>
-    <div v-else-if="serveItem==='serveSix'"><serve-six/></div>
-    <div v-else-if="serveItem==='serveSeven'"><serve-seven/></div>
-    <div v-else-if="serveItem==='serveEight'"><serve-eight/></div>
-    <div v-else-if="serveItem==='serveNine'">
+    <div v-else-if="comItem==='comTwo'"><com-two/></div>
+    <div v-else-if="comItem==='comThree'"><com-three/></div>
+    <div v-else-if="comItem==='comFour'"><com-four/></div>
+    <div v-else-if="comItem==='comFive'"><com-five/></div>
+    <div v-else-if="comItem==='comSix'"><com-six/></div>
+    <div v-else-if="comItem==='comSeven'"><com-seven/></div>
+    <div v-else-if="comItem==='comEight'"><com-eight/></div>
+    <div v-else-if="comItem==='comNine'">
       <!--  ➕ 하위 컴포넌트로 데이터(props)를 전달
               ┗ v-bind:fromParentToChild="dataFromParentToChild"
               ┗ :fromParentToChildOne="parentData1"
@@ -42,7 +43,7 @@
 
             ➕하위 컴포넌트에서 보내는 데이터('event',parameter)를 받아옴
               ┗ v-on:childEvent="updateParentValue" -->
-      <serve-nine
+      <com-nine
           v-bind:fromParentToChild="dataFromParentToChild"
           :fromParentToChildOne="parentData1"
           :fromParentToChildTwo="parentData2"
@@ -78,22 +79,24 @@
                   ┗ <blog-post :author="post.author"></blog-post>
                       변수 값에 동적 할당        -->
     </div>
+    <div v-else-if="comItem==='comTen'"><com-ten/></div>
   </div>
 </template>
 
 <script>
-import ServeOne from "@/components/studyFolder/ServeOne"; // ServeOne.vue를 갖다씀
-import ServeTwo from "@/components/studyFolder/ServeTwo";
-import ServeThree from "@/components/studyFolder/ServeThree";
-import ServeFour from "@/components/studyFolder/ServeFour";
-import ServeFive from "@/components/studyFolder/ServeFive";
-import ServeSix from "@/components/studyFolder/ServeSix";
-import ServeSeven from "@/components/studyFolder/ServeSeven";
-import ServeEight from "@/components/studyFolder/ServeEight";
-import ServeNine from "@/components/studyFolder/ServeNine";
+import ComOne from "@/components/studyFolder/ComOne"; // ComOne.vue를 갖다씀
+import ComTwo from "@/components/studyFolder/ComTwo";
+import ComThree from "@/components/studyFolder/ComThree";
+import ComFour from "@/components/studyFolder/ComFour";
+import ComFive from "@/components/studyFolder/ComFive";
+import ComSix from "@/components/studyFolder/ComSix";
+import ComSeven from "@/components/studyFolder/ComSeven";
+import ComEight from "@/components/studyFolder/ComEight";
+import ComNine from "@/components/studyFolder/ComNine";
+import ComTen from "@/components/studyFolder/ComTen";
 
 export default {
-  name: "mainView",
+  name: "MainView",
 
   props: { // 변수 설정, 상위 컴포넌트로부터 전달 받은 데이터
     /* 변수 타입 목록 : String, Number, Boolean, Array, Object, Function, Promise(또는 다른 생성자), Simbol */
@@ -127,20 +130,21 @@ export default {
   },
 
   components: {
-    ServeNine,
-    ServeEight,
-    ServeSeven,
-    ServeFour,
-    ServeSix,
-    ServeFive,
-    ServeThree,
-    ServeTwo,
-    ServeOne // MainServce.vue를 갖다씀
+    ComTen,
+    ComNine,
+    ComEight,
+    ComSeven,
+    ComFour,
+    ComSix,
+    ComFive,
+    ComThree,
+    ComTwo,
+    ComOne // MainServce.vue를 갖다씀
   },
 
   data() {
     return {
-      serveItem: "",
+      comItem: "",
 
       dataFromParentToChild: "부모로부터 자식에게 온 데이터",
       parentData1: 0,

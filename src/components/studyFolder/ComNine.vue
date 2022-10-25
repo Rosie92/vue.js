@@ -72,7 +72,7 @@
 
 <script>
 export default {
-  name: "ServeNine",
+  name: "ComNine",
 
   /*props: [ // 이것도 정상 동작함
     "fromParentToChild"

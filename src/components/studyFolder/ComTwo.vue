@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "ServeTwo",
+  name: "ComTwo",
 
   props: {
 

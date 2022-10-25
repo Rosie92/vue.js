@@ -58,7 +58,7 @@
 
 <script>
 export default {
-  name: "ServeOne",
+  name: "ComOne",
 
   props: {
     msg: String,

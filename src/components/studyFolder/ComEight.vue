@@ -162,7 +162,7 @@
 
 <script>
 export default {
-  name: "ServeEight",
+  name: "ComEight",
 
   data() {
     return {
