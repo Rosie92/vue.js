@@ -13,7 +13,7 @@ export const store = createStore({
     // 웹페이지 새로고침시 vuex state 값 초기화 현상 방지
     createPersistedState({
       storage: window.sessionStorage,
-      paths: ['Language', 'Practice'],
+      paths: ['Language'],
     }),
   ],
 });

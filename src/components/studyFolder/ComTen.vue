@@ -4,31 +4,51 @@
 
     <div class="margin">
       <h2>⚾ 데이터 가져오기 (state)</h2>
-      <p>🏀 /store/modules/Practice.js를 import 해준 뒤,<br>
+      <p>🏀 import { store } from "@/store/store";<br/>
         store.modules에 등록한 Practice의 state.info 값 가져오기</p>
       <p class="stateStyle">🎈 state.info<br/><br/>{{ infoData }}</p>
     </div>
 
     <div class="margin">
       <h2>⚾ state 값 바꾸기 (mutations, actions)</h2>
-      <p>🏀 위와 마찬가지로 import 후 메소드에 필요 값을 파라미터로 넘겨주며 실행<br/>
-        actions으로 데이터를 넘겨주고 actions에서 mutations를 호출하여 핸들링
-      </p>
-      <input class="nameInput" v-model="newInfo.name" placeholder="이름을 입력하세요"/>
-      <select v-model="newInfo.age">
-        <option v-for="option in ageOptions" :value="option.value">
-          {{ option.text }}
-        </option>
-      </select>
-      <p><button class="check" @click="runActions">actions run</button></p>
-      <p>🔼 actions로 mutations 실행 후 위의 state.info 데이터 확인</p>
-    </div>
+      <div class="margin">
+        <h4>⚾ actions</h4>
+        <p>🏀 dispatch로 경로/함수명+전달인자를 넘겨  actions를 실행하고,<br>
+          actions에서 다시 commit으로 mutations의 메소드를 호출하여 state의 값을 변경</p>
+
+        <div class="stateStyle">
+          <input class="nameInput" v-model="newInfo.name" placeholder="이름을 입력하세요"/>
+          <select v-model="newInfo.age">
+            <option v-for="option in ageOptions" :value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+          <p><button class="check" @click="runActions">actions run</button></p>
+          🎈 state.info<br/><br/>{{ infoData }}
+        </div>
+      </div>
+
+      <div class="margin">
+        <h4>⚾ mutations</h4>
+        <p>commit만으로 actions을 거치지 않고 바로 mutations로 붙는 것도 가능</p>
+      </div>
+   </div>
 
     <div class="margin">
-      <h2>⚾ Default state 데이터 가져오기 (getters)</h2>
-      <p>🏀 state가 변경되었더라도 기존의 값을 가져오기</p>
-      <p><button class="check" @click="runGetters">getters run</button></p>
-      <p>🔼 mutations 실행 후 위의 state.info 데이터 확인</p>
+      <h2>⚾ state 데이터 가져오기 (getters)</h2>
+      <p>🏀 사용자가 어떤 목적으로 getters를 활용하냐에 따라 역할이 정해짐. 자유도가 높다고 하면 될 것 같은데, 예를들면<br/><br/>
+        1️⃣ 여러 컴포넌트에서 반복되는 메소드를 정의하여 공통으로 사용<br/>
+        2️⃣ 항상 state의 초기 값을 반환하도록 설정<br/>
+      </p>
+      <div class="stateStyle">
+        🎈 getters로 가져온 state.info
+        <p><button class="check" @click="getStateInfo">getters run</button></p>
+        {{ getterInfoData }}
+        <hr/>
+        <p>🎈 state.info 초기화</p>
+        <p><button class="check" @click="getDefaultStateInfo">getters run</button></p>
+        {{ getterInfoData2 }}
+      </div>
     </div>
 
 
@@ -37,19 +57,18 @@
 </template>
 
 <script>
-//import { store } from "@/store/modules/Practice";
-/*import { useStore } from "vuex";*/
+//import { actions, mutations, state } from "@/store/modules/Practice";
 import { store } from "@/store/store";
-import { actions, mutations } from "@/store/modules/Practice";
 
 export default {
   name: "ComTen",
 
   data() {
     return {
-      // state // store.state.Practice.info
-      infoData: store.state.Practice.info,
-      //mutations
+      // state
+      infoData: store.state.Practice.info, // this.$store.state.Practice.info
+
+      // mutations, actions
       newInfo: {
         name: "",
         age: 31
@@ -60,35 +79,33 @@ export default {
         { text: '29', value: 29 },
         { text: '28', value: 28 }
       ],
+
+      // getters
+      getterInfoData: {},
+      getterInfoData2: {}
     }
   },
 
-  /*created() {
-    const store = useStore();
-    this.infoData = store.state.Practice.info;
-  },*/
-
   methods: {
+    // actions
     runActions() {
-      /*const store = useStore();
-      this.infoData = store.state.Practice.info;*/
       if(this.newInfo.name.length < 2) {
         alert("이름을 두 글자 이상 입력해주세요")
       } else {
-        /*mutations.setInfo(state, this.newInfo);*/
-        /*actions.settingInfo('setInfo', this.infoData);*/
-        /*store.actions.settingInfo('setInfo', this.infoData)*/
-        /*this.$store.dispatch('Practice/settingInfo', this.infoData);*/
-        /*store.dispatch("settingInfo", this.infoData)*/
-
-        this.$store.dispatch('Practice/settingInfo', this.infoData)
-        this.infoData = state.info;
+        this.$store.dispatch('Practice/settingInfo', this.newInfo)
+        this.infoData = store.state.Practice.info;
       }
     },
-    runGetters() {
-      this.infoData = getters.getDefaultInfo(state);
+
+    // getters
+    getStateInfo() {
+      this.getterInfoData = this.$store.getters['Practice/getStateInfo'];
+    },
+    getDefaultStateInfo() {
+      this.getterInfoData2 = this.$store.getters['Practice/getDefaultStateInfo'];
     },
 
+    // etc
     scrollToTop() {
       window.scrollTo(0, 0);
     }
