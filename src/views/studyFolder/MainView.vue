@@ -17,12 +17,12 @@
         <button @click="comItem='comSeven'">📗 Event 핸들링</button>
         <button @click="comItem='comEight'">📙 Form 입력 바인딩</button>
         <button @click="comItem='comNine'">📘 부모 자식간의 Data 핸들링</button>
-        <button @click="comItem='comTen'">📒 store</button>
+        <button @click="comItem='comTen'">📒 store 활용 (vuex)</button>
       </div>
       <hr class="hr">
     </div>
 
-    <div v-if="comItem==='ComOne'">
+    <div v-if="comItem==='comOne'">
       <com-one
         msg="- ComOne의 'msg'"
         v_once="- 갱신되지 않는 데이터 'v-once, Option'"
@@ -175,6 +175,5 @@ export default {
     border: 0.1px solid black;
     border-radius: 10px;
     margin: 5px;
-    float: left;
   }
 </style>
