@@ -17,7 +17,8 @@
         <button @click="comItem='comSeven'">📗 Event 핸들링</button>
         <button @click="comItem='comEight'">📙 Form 입력 바인딩</button>
         <button @click="comItem='comNine'">📘 부모 자식간의 Data 핸들링</button>
-        <button @click="comItem='comTen'">📒 store 활용 (vuex)</button>
+        <button @click="comItem='comTen'">📒 store 활용 (Vuex)</button>
+        <button @click="comItem='comEleven'">📓 axios 활용</button>
       </div>
       <hr class="hr">
     </div>
@@ -80,6 +81,7 @@
                       변수 값에 동적 할당        -->
     </div>
     <div v-else-if="comItem==='comTen'"><com-ten/></div>
+    <div v-else-if="comItem==='comEleven'"><com-eleven/></div>
   </div>
 </template>
 
@@ -94,6 +96,7 @@ import ComSeven from "@/components/studyFolder/ComSeven";
 import ComEight from "@/components/studyFolder/ComEight";
 import ComNine from "@/components/studyFolder/ComNine";
 import ComTen from "@/components/studyFolder/ComTen";
+import ComEleven from "@/components/studyFolder/ComEleven";
 
 export default {
   name: "MainView",
@@ -130,6 +133,7 @@ export default {
   },
 
   components: {
+    ComEleven,
     ComTen,
     ComNine,
     ComEight,

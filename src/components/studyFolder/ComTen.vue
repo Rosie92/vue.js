@@ -5,17 +5,27 @@
     <div class="margin">
       <h2>⚾ 데이터 가져오기 (state)</h2>
       <p>🏀 import { store } from "@/store/store";<br/>
-        store.modules에 등록한 Practice의 state.info 값 가져오기</p>
-      <p class="stateStyle">🎈 state.info<br/><br/>{{ infoData }}</p>
+        store.modules에 등록한 StorePractice의 state.info 값 가져오기</p>
+      <p class="stateStyle">🎈 state.info (computed)<br/><br/>{{ getState }}</p>
     </div>
 
     <div class="margin">
       <h2>⚾ state 값 바꾸기 (mutations, actions)</h2>
       <div class="margin">
+
+        <div class="margin">
+          <h4>⚾ mutations</h4>
+          <p>🏀 commit으로 경로/함수명+전달인자를 넘겨 mutations의 메소드 실행</p>
+          <div class="stateStyle">
+            <input class="nameInput" v-model="newName" placeholder="이름을 입력하세요"/>
+            <p><button class="check" @click="runMutations">mutations run</button></p>
+            🎈 state.info (computed)<br/><br/>{{ getState }}
+          </div>
+        </div>
+
         <h4>⚾ actions</h4>
         <p>🏀 dispatch로 경로/함수명+전달인자를 넘겨  actions를 실행하고,<br>
           actions에서 다시 commit으로 mutations의 메소드를 호출하여 state의 값을 변경</p>
-
         <div class="stateStyle">
           <input class="nameInput" v-model="newInfo.name" placeholder="이름을 입력하세요"/>
           <select v-model="newInfo.age">
@@ -24,13 +34,8 @@
             </option>
           </select>
           <p><button class="check" @click="runActions">actions run</button></p>
-          🎈 state.info<br/><br/>{{ infoData }}
+          🎈 state.info (computed)<br/><br/>{{ getState }}
         </div>
-      </div>
-
-      <div class="margin">
-        <h4>⚾ mutations</h4>
-        <p>commit만으로 actions을 거치지 않고 바로 mutations로 붙는 것도 가능</p>
       </div>
    </div>
 
@@ -57,7 +62,7 @@
 </template>
 
 <script>
-//import { actions, mutations, state } from "@/store/modules/Practice";
+//import { actions, mutations, state } from "@/store/modules/StorePractice";
 import { store } from "@/store/store";
 
 export default {
@@ -66,9 +71,12 @@ export default {
   data() {
     return {
       // state
-      infoData: store.state.Practice.info, // this.$store.state.Practice.info
+      infoData: {},
 
-      // mutations, actions
+      // mutations
+      newName: "",
+
+      // actions
       newInfo: {
         name: "",
         age: 31
@@ -86,23 +94,35 @@ export default {
     }
   },
 
+  // state
+  computed: {
+    getState() {
+      return store.state.StorePractice.info; // this.$store.state.StorePractice.info
+    }
+  },
+
   methods: {
+    // mutations
+    runMutations() {
+      this.$store.commit('StorePractice/setInfoName', this.newName)
+    },
+
     // actions
     runActions() {
       if(this.newInfo.name.length < 2) {
         alert("이름을 두 글자 이상 입력해주세요")
       } else {
-        this.$store.dispatch('Practice/settingInfo', this.newInfo)
-        this.infoData = store.state.Practice.info;
+        this.$store.dispatch('StorePractice/settingInfo', this.newInfo)
+        this.infoData = store.state.StorePractice.info;
       }
     },
 
     // getters
     getStateInfo() {
-      this.getterInfoData = this.$store.getters['Practice/getStateInfo'];
+      this.getterInfoData = this.$store.getters['StorePractice/getStateInfo'];
     },
     getDefaultStateInfo() {
-      this.getterInfoData2 = this.$store.getters['Practice/getDefaultStateInfo'];
+      this.getterInfoData2 = this.$store.getters['StorePractice/getDefaultStateInfo'];
     },
 
     // etc
